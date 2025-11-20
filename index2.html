@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step-Up Your Stride | Sneakers • Fitness • Lifestyle</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; color: #222; background: #fff; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      z-index: 1000;
+    }
+    .logo { font-size: 1.7rem; font-weight: 700; letter-spacing: 1px; }
+    nav ul { display: flex; gap: 2rem; list-style: none; }
+    nav a { color: #fff; font-weight: 500; transition: color 0.3s; }
+    nav a:hover { color: #38bdf8; }
+     { position: relative; height: 90vh; overflow: hidden; }
+   
+    /* HERO */
+    .hero {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+  }
+
+  .carousel {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .slide::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    max-width: 700px;
+    padding: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* Carousel Dots */
+  .carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .dot.active {
+    background: #38bdf8;
+  }
+
+  @media (max-width: 768px) {
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+  }
+
+    /* SECTION */
+    section { padding: 4rem 10%; text-align: center; }
+    h2 { font-size: 2rem; color: #0f172a; margin-bottom: 1rem; }
+    p { color: #555; line-height: 1.7; max-width: 800px; margin: 0 auto 2rem; }
+
+    /* ABOUT */
+    .about {
+      background: #f8fafc;
+      border-radius: 10px;
+      padding: 3rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .product {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      background: #fff;
+    }
+    .product:hover { transform: translateY(-8px); }
+    .product img {
+      width: 100%; height: 220px; object-fit: cover;
+    }
+    .product h3 { color: #0ea5e9; margin: 1rem 0 0.5rem; }
+    .product p { font-size: 0.95rem; padding: 0 1rem 1rem; }
+
+    /* LIFESTYLE */
+    .lifestyle {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      text-align: left;
+    }
+    .lifestyle img {
+      flex: 1 1 400px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .lifestyle-text {
+      flex: 1 1 400px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: #f8fafc;
+      padding: 4rem 10%;
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .testimonial p { font-style: italic; margin-bottom: 1rem; }
+    .testimonial h4 { color: #0ea5e9; }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1rem;
+    }
+    .footer-links a {
+      color: #bbb;
+      margin: 0 10px;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: #38bdf8; }
+    .socials a {
+      color: #38bdf8;
+      margin: 0 10px;
+      font-size: 1.3rem;
+      transition: color 0.3s;
+    }
+    .socials a:hover { color: #fff; }
+
+    /* RESPONSIVE */
+    @media(max-width:768px) {
+      nav ul { display: none; }
+      .hero-content h1 { font-size: 2.3rem; }
+      .lifestyle { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Step-Up Your Stride</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#sneakers">Sneakers</a></li>
+        <li><a href="#lifestyle">Lifestyle</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO / CAROUSEL -->
+  <!-- HERO / CAROUSEL -->
+<section class="hero" id="home">
+  <div class="carousel" id="carousel">
+    <div class="slide" style="background-image: url('shoes.webp');">
+      <div class="hero-content">
+        <h1>Stride Into Luxury & Fitness</h1>
+        <p>Discover premium sneakers designed for performance, yoga, and an active lifestyle.</p>
+        <button class="btn">Shop Collection</button>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('run.jpg');">
+      <div class="hero-content">
+        <h1>Balance Power & Peace</h1>
+        <p>From gym sessions to yoga mornings, find your rhythm with our signature gear.</p>
+        <button class="btn">Explore Wellness</button>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('jog.webp');">
+      <div class="hero-content">
+        <h1>Elevate Your Everyday</h1>
+        <p>Where fitness meets fashion — because every stride deserves to shine.</p>
+        <button class="btn">Join the Movement</button>
+      </div>
+    </div>
+
+    <div class="slide" style="background-image: url('running.jpg');">
+      <div class="hero-content">
+        <h1>Luxury Meets Performance</h1>
+        <p>Step-Up Your Stride — redefining premium athletic lifestyle wear.</p>
+        <button class="btn">Discover Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Dots -->
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about">
+      <h2>About Us</h2>
+      <p><strong>Step-Up Your Stride</strong> is a lifestyle and performance brand dedicated to empowering movement. We blend cutting-edge sneaker design with the philosophy of balance — connecting fitness, yoga, and luxury living into one stride.</p>
+    </div>
+  </section>
+
+  <!-- PRODUCTS / SNEAKERS -->
+  <section id="sneakers">
+    <h2>Signature Sneakers</h2>
+    <p>Engineered for comfort, crafted for style — our sneakers are designed for every step of your journey.</p>
+    <div class="products">
+      <div class="product">
+        <img src="jog.webp" alt="Luxury Runner">
+        <h3>Stride X Pro</h3>
+        <p>High-performance luxury runner with breathable mesh and sleek comfort fit.</p>
+      </div>
+      <div class="product">
+        <img src="run.jpg" alt="Yoga Sneaker">
+        <h3>ZenFlex Yoga</h3>
+        <p>Lightweight, flexible footwear perfect for yoga, Pilates, and mindful movement.</p>
+      </div>
+      <div class="product">
+        <img src="gym.jpg" alt="Gym Trainer">
+        <h3>CoreTrainer 360</h3>
+        <p>Built for stability and strength — ideal for gym workouts and cross-training.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFESTYLE -->
+  <section id="lifestyle">
+    <h2>Live The Stride Lifestyle</h2>
+    <div class="lifestyle">
+      <img src="shoe.webp" alt="Lifestyle">
+      <div class="lifestyle-text">
+        <p>Step-Up Your Stride isn’t just footwear — it’s a lifestyle that celebrates wellness, luxury, and motivation. From sunrise yoga to late-night workouts, we empower your every step with innovation and elegance.</p>
+        <button class="btn">Explore Lifestyle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <h2>What Our Community Says</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>“These sneakers redefine comfort and luxury! I wear them from yoga to brunch.”</p>
+        <h4>– Ava M.</h4>
+      </div>
+      <div class="testimonial">
+        <p>“The design and fit are next level. Perfect balance of gym performance and street style.”</p>
+        <h4>– Daniel R.</h4>
+      </div>
+      <div class="testimonial">
+        <p>“Step-Up Your Stride has transformed the way I view wellness — elegance meets energy!”</p>
+        <h4>– Priya K.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-links">
+      <a href="#home">Home</a> |
+      <a href="#about">About</a> |
+      <a href="#sneakers">Sneakers</a> |
+      <a href="#lifestyle">Lifestyle</a> |
+      <a href="#contact">Contact</a>
+    </div>
+    <p>📧 support@stepupstride.com | 📞 +1 (800) 555-STRD</p>
+    <div class="socials">
+      <a href="#">🌐</a>
+      <a href="#">📘</a>
+      <a href="#">📸</a>
+      <a href="#">🐦</a>
+    </div>
+    <p style="margin-top:1rem;">© 2025 Step-Up Your Stride | All Rights Reserved</p>
+  </footer>
+
+  <!-- CAROUSEL SCRIPT -->
+  <script>
+  const carousel = document.getElementById('carousel');
+  const slides = carousel.children.length;
+  const dotsContainer = document.getElementById('carouselDots');
+  let index = 0;
+
+  // Create dots
+  for (let i = 0; i < slides; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => moveToSlide(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  const dots = document.querySelectorAll('.dot');
+
+  function moveToSlide(i) {
+    index = i;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+    updateDots();
+  }
+
+  function updateDots() {
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+  }
+
+  setInterval(() => {
+    index = (index + 1) % slides;
+    moveToSlide(index);
+  }, 5000);
+</script>
+
+</body>
+</html>
+
